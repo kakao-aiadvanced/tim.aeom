@@ -35,3 +35,24 @@ pip install -U langchain_community bs4
 ### RecursiveCharacterTextSplitter
 https://python.langchain.com/api_reference/text_splitters/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#recursivecharactertextsplitter
 https://python.langchain.com/docs/tutorials/rag/
+
+
+## 추천 링크
+https://github.com/teddylee777/langchain-kr
+https://github.com/mlabonne/llm-course
+
+
+## Fine Tuning
+https://docs.google.com/presentation/d/13WYhEEbpM7ydIixcR-h_Dd_H5qk81kwrjW0T5MpEmU0/edit#slide=id.p
+
+pre-trained model 에 일부 데이터셋을 학습
+over fitting.. 일반적인 케이스에 대해서는 성능이 떨어짐.
+파인 튜닝은 정말 "~~" 분야에서만 사용할거다. 라는 유즈케이스에서 한다.
+
+파인 튜닝을 하려면 트레이닝. 파라미터. 러닝. 알아야 함.
+
+LoRA..
+배치 처리할때 좋다.
+QLoRa +양자화
+
+
