@@ -1,7 +1,7 @@
 from typing import List
 from langchain_core.documents import Document
 from typing_extensions import TypedDict
-from day3.filter import check_relevant, check_hallucination, check_answer
+from filter import check_relevant, check_hallucination, check_answer
 from llm import llm, generate_with_context
 from datasource import vectorstore, route_datasource, travily
 
