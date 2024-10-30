@@ -4,7 +4,7 @@ from langgraph.constants import END
 from langgraph.graph import StateGraph
 
 from graph import GraphState, web_search, retrieve, grade_documents, generate, \
-    grade_generation_v_documents_and_question, route_question, decide_to_generate
+    grade_generation_v_documents_and_question, route_question, decide_to_generate, failed
 
 workflow = StateGraph(GraphState)
 
@@ -13,6 +13,7 @@ workflow.add_node("websearch", web_search)  # web search
 workflow.add_node("retrieve", retrieve)  # retrieve
 workflow.add_node("grade_documents", grade_documents)  # grade documents
 workflow.add_node("generate", generate)  # generatae
+workflow.add_node("failed", failed)  # failed
 
 # Build graph
 workflow.set_conditional_entry_point(
@@ -30,6 +31,7 @@ workflow.add_conditional_edges(
     {
         "websearch": "websearch",
         "generate": "generate",
+        "not_found_relevant": "failed"
     },
 )
 workflow.add_edge("websearch", "generate")
@@ -40,8 +42,11 @@ workflow.add_conditional_edges(
         "not supported": "generate",
         "useful": END,
         "not useful": "websearch",
+        "exist_hallucination": "failed"
     },
 )
+
+workflow.add_edge("failed", END)
 
 # Compile
 app = workflow.compile()
